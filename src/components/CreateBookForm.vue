@@ -29,10 +29,19 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 form {
   padding: 10px;
   margin-top: 10px;
   border: 1px dashed #c3c8ce;
+  border-radius: 5px;
+}
+form input{
+ border-radius: 10px;
+ border : none;
+}
+
+h3{
+  color: #a6a813; 
 }
 </style>

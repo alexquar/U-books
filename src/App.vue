@@ -39,8 +39,12 @@ button {
   background: #808F85;
   color: #fff;
   border: 0;
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 6px;
   cursor: pointer;
+}
+button:hover{
+background : #a6a813; 
+color: #fffaf3;
 }
 </style>
