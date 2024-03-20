@@ -4,18 +4,19 @@
       <h1>My Book List</h1>
 
       <!-- for logged in users -->
-      <div>
+      <div id = "thing1" v-if="user">
         <router-link to="/">Home</router-link>
         <button @click="handleClick">Logout</button>
       </div>
       
       <!-- for logged out users -->
-      <div>
+      <div id ="thing2" v-if="!user">
         <router-link to="/login">Login</router-link>
         <router-link to="/signup">Signup</router-link>
       </div>
     </nav>
   </div>
+  <p v-if="user">logged in as {{ user.email }}</p>
 </template>
 
 <script>
@@ -25,13 +26,13 @@ import getUser from '../composables/getUser'
 export default {
   setup() {
     const {user} = getUser()
-    
+
 
     const handleClick = () => {
       signOut(auth)
     }
 
-    return { handleClick }
+    return { handleClick,user }
   }
 }
 </script>
