@@ -21,12 +21,14 @@
 <script>
 import { auth } from '../firebase/config'
 import { signOut } from 'firebase/auth'
-
+import getUser from '../composables/getUser'
 export default {
   setup() {
+    const {user} = getUser()
+    
+
     const handleClick = () => {
       signOut(auth)
-      console.log('signed out')
     }
 
     return { handleClick }
