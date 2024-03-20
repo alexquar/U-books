@@ -6,7 +6,7 @@
       <!-- for logged in users -->
       <div id="thing2">
         <router-link to="/">Home</router-link>
-        <button>Logout</button>
+        <button @click="handleClick">Logout</button>
       </div>
       
       <!-- for logged out users -->
@@ -20,7 +20,15 @@
 
 <script>
 export default {
+setup(){
 
+
+
+  const handleClick = () => {
+
+  }
+  return {handleClick}
+}
 }
 </script>
 
