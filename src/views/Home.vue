@@ -20,21 +20,33 @@ import CreateBookForm from '@/components/CreateBookForm'
 import getCollection from '@/composables/getCollection'
 import { db } from '@/firebase/config'
 import { doc, deleteDoc, updateDoc } from 'firebase/firestore'
+import { useRouter } from 'vue-router'
+import { watchEffect } from 'vue'
+import getUser from '../composables/getUser'
 export default {
   name: 'Home',
   components: { CreateBookForm },
   setup() {
+    const { user } = getUser()
+    const router = useRouter()
     const {documents : books} = getCollection('books')
     const handleDelete = async (book) => {
       const docRef = doc(db, 'books', book.id)
       deleteDoc(docRef)
     }
 
+    watchEffect(() => {
+      if (!user.value) {
+        router.push('/login')
+      }
+    })
+
     const handleUpdate = (book) => {
       const docRef = doc(db, 'books', book.id)
       updateDoc(docRef, {isFav : !book.isFav})
     }
     return { books, handleDelete, handleUpdate }
+
   }
 }
 </script>
