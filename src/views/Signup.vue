@@ -34,3 +34,16 @@ export default {
   }
 }
 </script>
+
+
+<style scoped>
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+h2{
+  text-align: center;
+}
+
+</style>

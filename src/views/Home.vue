@@ -29,7 +29,7 @@ export default {
   setup() {
     const { user } = getUser()
     const router = useRouter()
-    const {documents : books} = getCollection('books')
+    const {documents : books} = getCollection('books', ['userUid', '==', user.value.uid])
     const handleDelete = async (book) => {
       const docRef = doc(db, 'books', book.id)
       deleteDoc(docRef)
