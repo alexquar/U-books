@@ -10,8 +10,8 @@
             <p>Genre: {{ book.author }}</p>
             <p>From {{ book.email }}'s list</p>
           </div>
-          <div @click='handleUpdate(book)' :class="{icon:true, fav:book.isFav}">
-            <p class="add">Add to my list</p>
+          <div @click='handleAdd(book)' :class="{icon:true, fav:book.isFav}">
+            <p class="add">Add to my list?</p>
           </div>
         </li>
       </ul>
@@ -21,7 +21,7 @@
   <script>
   import getCollection from '@/composables/getCollection'
   import { db } from '@/firebase/config'
-  import { doc, deleteDoc, updateDoc } from 'firebase/firestore'
+import { addDoc, collection } from 'firebase/firestore'
   import { useRouter } from 'vue-router'
   import { watchEffect } from 'vue'
   import getUser from '../composables/getUser'
@@ -31,18 +31,18 @@
       const { user } = getUser()
       const router = useRouter()
       const {documents : books} = getCollection('books')
-  
       watchEffect(() => {
         if (!user.value) {
           router.push('/login')
         }
       })
   
-      const handleUpdate = (book) => {
-        const docRef = doc(db, 'books', book.id)
-        updateDoc(docRef, {isFav : !book.isFav})
-      }
-      return { books, handleUpdate }
+      const handleAdd = async (book) => {
+      const colRef = collection(db,'books')
+     await addDoc(colRef, {title : book.title, author : book.author, isFav : false, userUid : user.value.uid, language: book.language, genre: book.genre, email : user.value.email  })
+    }
+
+      return { books, handleAdd }
   
     }
   }
