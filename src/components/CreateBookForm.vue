@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <h3>Add a New Book</h3>
+    <h3>Add a New Book To My List</h3>
 
     <label for="title">Book title:</label>
     <input type="text" name="title" v-model="title" required>

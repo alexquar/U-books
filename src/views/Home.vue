@@ -1,10 +1,13 @@
 <template>
   <div class="home">
+    <h3>My Reading List...</h3>
     <ul>
       <li v-for="book in books" :key="book.id">
         <div class="details">
           <h3 @click="handleDelete(book)">{{ book.title }}</h3>
           <p>By {{ book.author }}</p>
+          <p>In {{ book.language }}</p>
+          <p>Genre: {{ book.author }}</p>
         </div>
         <div @click='handleUpdate(book)' :class="{icon:true, fav:book.isFav}">
           <span class="material-icons">favorite</span>

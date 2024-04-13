@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav>
-      <h1>My Book List</h1>
+      <h1>U Books</h1>
 
       <!-- for logged in users -->
       <div id = "thing1" v-if="user">
