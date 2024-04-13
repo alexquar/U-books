@@ -31,7 +31,7 @@ export default {
     const {user} = getUser()
     const handleSubmit = async () => {
       const colRef = collection(db,'books')
-     await addDoc(colRef, {title : title.value, author : author.value, isFav : false, userUid : user.value.uid, language: language.value, genre: genre.value })
+     await addDoc(colRef, {title : title.value, author : author.value, isFav : false, userUid : user.value.uid, language: language.value, genre: genre.value, email : user.value.email  })
       title.value = ''
       author.value = ''
       genre.value = ''
