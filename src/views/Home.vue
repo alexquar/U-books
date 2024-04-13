@@ -7,7 +7,7 @@
           <h3 @click="handleDelete(book)">{{ book.title }}</h3>
           <p>Author: {{ book.author }}</p>
             <p>Written in: {{ book.language }}</p>
-            <p>Genre: {{ book.author }}</p>
+            <p>Genre: {{ book.genre }}</p>
         </div>
         <div @click='handleUpdate(book)' :class="{icon:true, fav:book.isFav}">
           <span class="material-icons">favorite</span>
@@ -54,7 +54,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .home ul {
   padding: 0;
 }

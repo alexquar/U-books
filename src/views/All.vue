@@ -67,10 +67,6 @@ import { addDoc, collection } from 'firebase/firestore'
     margin: 0;
     margin-bottom: 4px;
   }
-  .home li h3:hover {
-    cursor: pointer;
-    text-decoration: line-through;
-  }
   .home li p {
     margin: 0;
   }
