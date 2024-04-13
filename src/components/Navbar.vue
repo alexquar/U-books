@@ -5,9 +5,12 @@
 
       <!-- for logged in users -->
       <div id = "thing1" v-if="user">
-        <router-link to="/">Home</router-link>
+        <router-link to="/">My books</router-link>
+        <router-link to="/all">All books</router-link>
+        <router-link to="/about">About</router-link>
         <button @click="handleClick">Logout</button>
       </div>
+      
       
       <!-- for logged out users -->
       <div id ="thing2" v-if="!user">

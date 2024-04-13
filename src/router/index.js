@@ -5,8 +5,8 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Signup from '../views/Signup.vue'
 import { auth } from '../firebase/config'
-
-
+import All from '@/views/All.vue'
+import About from '@/views/About.vue'
 const requireAuth = (to, from, next) => {
   let user = auth.currentUser
   if (!user) {
@@ -21,6 +21,18 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+    beforeEnter : requireAuth
+  },
+  {
+    path: '/all',
+    name: 'All',
+    component: All,
+    beforeEnter : requireAuth
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About,
     beforeEnter : requireAuth
   },
   {
