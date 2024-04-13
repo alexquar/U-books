@@ -8,6 +8,11 @@
     <label for="author">Book author:</label>
     <input type="text" name="author" v-model="author" required>
 
+    <label for="author">Book Genre:</label>
+    <input type="text" name="author" v-model="genre" required>
+
+    <label for="author">Book Language:</label>
+    <input type="text" name="author" v-model="language" required>
     <button>Add Book</button>
   </form>
 </template>
@@ -20,16 +25,20 @@ import getUser from '../composables/getUser'
 export default {
   setup() {
     const title = ref('')
+    const genre = ref('')
     const author = ref('')
+    const language = ref('')
     const {user} = getUser()
     const handleSubmit = async () => {
       const colRef = collection(db,'books')
-     await addDoc(colRef, {title : title.value, author : author.value, isFav : false, userUid : user.value.uid })
+     await addDoc(colRef, {title : title.value, author : author.value, isFav : false, userUid : user.value.uid, language: language.value, genre: genre.value })
       title.value = ''
       author.value = ''
+      genre.value = ''
+      language.value =''
     }
 
-    return { handleSubmit, title, author }
+    return { handleSubmit, title, author, genre, language}
   }
 }
 </script>
